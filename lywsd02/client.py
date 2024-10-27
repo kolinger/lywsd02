@@ -116,7 +116,7 @@ class Lywsd02Client:
     def tz_offset(self):
         if self._tz_offset is not None:
             return self._tz_offset
-        elif time.daylight:
+        elif time.localtime().tm_isdst > 0:
             return -time.altzone // 3600
         else:
             return -time.timezone // 3600
